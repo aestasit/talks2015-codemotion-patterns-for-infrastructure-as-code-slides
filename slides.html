@@ -1,0 +1,1112 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<title>Patterns for Infrastructure-as-code</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=1274, user-scalable=no">
+	<link rel="stylesheet" href="themes/ribbon/styles/style.css">
+	<link rel="stylesheet" href="themes/ribbon/styles/print.css" media="print">
+	<!--
+		To apply styles to the certain slides
+		use slide ID to get needed elements
+		-->
+	<style>
+		#Cover h2 { color:#FFF; text-align:left; font-size:60px; }
+		#FitToWidth h2,
+		#FitToHeight h2 {
+			color:#FFF;
+			text-align:center;
+			}
+	</style>
+</head>
+<body class="list">
+	<header class="caption">
+		<h1>Patterns for Infrastructure-as-code</h1>
+		<p>Andrey Adamovich, Aestas/IT</p>
+	</header>
+	<div class="slide cover" id="Cover"><div>
+		<section>
+			<header>
+				<h2></h2>
+			</header><img src="images/COVER_IAC.png" />
+		</section>
+	</div></div>	
+	
+    
+    
+       
+    <div class="slide shout" id="1"><div>
+        <section>
+			<header>
+				<h2>About me</h2>
+			</header>    
+            
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="2"><div>
+        <section>
+			<header>
+				<h2>Andrey Adamovich</h2>
+			</header>    
+            <ul> 
+ <li>Bio: Developer, coach, speaker, author</li> 
+ <li>Company: Aestas/IT (<a href="http://aestasit.com">http://aestasit.com</a>)</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="3"><div>
+        <section>
+			<header>
+				<h2>Contact details</h2>
+			</header>    
+            <ul> 
+ <li>E-mail: <a href="mailto:andrey@aestasit.com">andrey@aestasit.com</a></li> 
+ <li>Linkedin: <a href="http://www.linkedin.com/in/andreyadamovich">http://www.linkedin.com/in/andreyadamovich</a></li> 
+ <li>Lanyrd: <a href="http://lanyrd.com/profile/andrey-adamovich">http://lanyrd.com/profile/andrey-adamovich</a></li> 
+ <li>GitHub: <a href="https://github.com/aadamovich">https://github.com/aadamovich</a></li> 
+ <li>SO: <a href="http://stackoverflow.com/users/162792/andrey-adamovich">http://stackoverflow.com/users/162792/andrey-adamovich</a></li> 
+ <li>Twitter: @codingandrey, @aestasit</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide shout" id="4"><div>
+        <section>
+			<header>
+				<h2>What this talk is about?</h2>
+			</header>    
+            
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="5"><div>
+        <section>
+			<header>
+				<h2>Well...</h2>
+			</header>    
+            <ul> 
+ <li>Collection of patterns (and antipatterns) for<br /> representing your infrastructure-as-code.</li> 
+ <li>Work in progress (never done).</li> 
+ <li>Feedback is more than welcome!</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="6"><div>
+        <section>
+			<header>
+				<h2>Infrastructure-as-code</h2>
+			</header>    
+            <blockquote>
+ <p><strong>Infrastructure-as-Code</strong> (IaC) is a type of IT infrastructure<br />that operations teams can automatically manage and provision<br />through code, rather than using a manual process.<br />Infrastructure-as-Code is sometimes referred to as programmable infrastructure.</p> 
+</blockquote>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="7"><div>
+        <section>
+			<header>
+				<h2>Images, declarations, tasks</h2>
+			</header>    
+            
+<figure> 
+ <img src="images/IMT.png" alt="imt" /> 
+</figure>
+
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="8"><div>
+        <section>
+			<header>
+				<h2>IaC players</h2>
+			</header>    
+            <ul> 
+ <li>Image defitions</li> 
+ <li>Provisioning declarations</li> 
+ <li>Automation scripts</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="9"><div>
+        <section>
+			<header>
+				<h2>Tools</h2>
+			</header>    
+            <ul> 
+ <li>Image creation/management: Packer, Docker, AWS AMI/EC2 etc.</li> 
+ <li>State declarations: Puppet, Chef, Ansible etc.</li> 
+ <li>Automation blocks: SSH, API + <code>&lt;your favorite scripting language&gt;</code></li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="10"><div>
+        <section>
+			<header>
+				<h2>Periodic table of DevOps</h2>
+			</header>    
+            
+<figure> 
+ <img src="images/PERIODIC_TABLE.png" alt="pt" /> 
+</figure>
+
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="11"><div>
+        <section>
+			<header>
+				<h2>Everything is code!</h2>
+			</header>    
+            
+<figure> 
+ <img src="images/FLOW.png" alt="flow" /> 
+</figure>
+
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="12"><div>
+        <section>
+			<header>
+				<h2>Code "deployment" (one click away)</h2>
+			</header>    
+            
+<figure> 
+ <img src="images/ONE_CLICK.png" alt="one" /> 
+</figure>
+
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="13"><div>
+        <section>
+			<header>
+				<h2>Code "deployment" (one commit away)</h2>
+			</header>    
+            
+<figure> 
+ <img src="images/ONE_COMMIT.png" alt="one" /> 
+</figure>
+
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide shout" id="14"><div>
+        <section>
+			<header>
+				<h2>Let's see some patterns!</h2>
+			</header>    
+            
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="15"><div>
+        <section>
+			<header>
+				<h2>Antipattern: Golden Image</h2>
+			</header>    
+            <ul> 
+ <li>Manually crafted base infrastructure server image that nobody dares or knows how to change.</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="16"><div>
+        <section>
+			<header>
+				<h2>Pattern: Reproducable Images</h2>
+			</header>    
+            <ul> 
+ <li>Operating system distributions (<code>*.iso</code>).</li> 
+ <li>Base provider images.</li> 
+ <li>Packer can create images for many virtualization software and cloud providers.</li> 
+ <li>Docker can build and package containers as images for distribution.</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="17"><div>
+        <section>
+			<header>
+				<h2>Pattern: Secret Isolating</h2>
+			</header>    
+            <ul> 
+ <li>Everything is code, but secrets are not!</li> 
+ <li>Secrets should reside in a separate location!</li> 
+ <li>Secrets should be injected on the very last stage of &quot;deploying&quot; your code.</li> 
+ <li>In this way the actualy code still remains sharable.</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="18"><div>
+        <section>
+			<header>
+				<h2>Pattern: Ecrypted Secrets</h2>
+			</header>    
+            <ul> 
+ <li>Shared secrets must be encrypted!</li> 
+ <li>Well, all stored secrets must be encrypted!</li> 
+ <li>Decryption password is shared through a different channel.</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="19"><div>
+        <section>
+			<header>
+				<h2>Encryption options</h2>
+			</header>    
+            <ul> 
+ <li>Encrypt hard drives</li> 
+ <li>Encrypt files in version control</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="20"><div>
+        <section>
+			<header>
+				<h2>Encryption options: GPG</h2>
+			</header>    
+            <ul> 
+ <li><p>GPG/PGP:</p> <pre>
+<code>&gt; cd &lt;path-to-your-repo&gt;/</code>
+<code>&gt; gpg --encrypt sensitive_file</code>
+<code>&gt; git add sensitive_file</code>
+<code>&gt; git commit -m 'Add encrypted version of a sensitive file'</code>
+</pre></li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="21"><div>
+        <section>
+			<header>
+				<h2>Encryption options: Transcrypt</h2>
+			</header>    
+            <ul> 
+ <li><p>OpenSSL + Transcrypt (<a href="https://github.com/elasticdog/transcrypt)">https://github.com/elasticdog/transcrypt)</a>:</p> <pre>
+<code>&gt; cd &lt;path-to-your-repo&gt;/</code>
+<code>&gt; transcrypt</code>
+<code>&gt; echo 'sensitive_file  filter=crypt diff=crypt' &gt;&gt; .gitattributes</code>
+<code>&gt; git add .gitattributes sensitive_file</code>
+<code>&gt; git commit -m 'Add encrypted version of a sensitive file'</code>
+</pre></li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="22"><div>
+        <section>
+			<header>
+				<h2>Antipattern: Postponing Secret Isolation</h2>
+			</header>    
+            <ul> 
+ <li>&quot;It's OK for now&quot; does not really work!</li> 
+ <li>It creates a culture of security being not so important!</li> 
+ <li>It may alienate your Dev and Ops teams, because they can't share code due to hard-coded secrets!</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="23"><div>
+        <section>
+			<header>
+				<h2>Pattern: Infrastructure Component DSL</h2>
+			</header>    
+            <ul> 
+ <li>Nobody knows your domain better than you!</li> 
+ <li>You can write your own DSL or you can leverage existing tools.</li> 
+ <li>The main thing is to group infrastructure configuration into reusable components.</li> 
+ <li>That's what we do with application code, that's what we should do with IaC!</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="24"><div>
+        <section>
+			<header>
+				<h2>Example: pseudo-code</h2>
+			</header>    
+            <pre>
+<code>system1 {</code>
+<code>  http_proxy { </code>
+<code>    cache=true</code>
+<code>    http_application {</code>
+<code>      param1=A</code>
+<code>    }</code>
+<code>  }</code>
+<code>  database {</code>
+<code>    memory=3GB</code>
+<code>  }</code>
+</pre>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="25"><div>
+        <section>
+			<header>
+				<h2>DSL</h2>
+			</header>    
+            <ul> 
+ <li>Bash, Perl, Python, Groovy,... anything works.</li> 
+ <li>Though, Puppet, Chef, Ansible provide facilities to define and group abstractions.</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="26"><div>
+        <section>
+			<header>
+				<h2>Antipattern: "Fancy-File-Copying"</h2>
+			</header>    
+            <ul> 
+ <li>To configure package X, you keep all configuration files it needs within your &quot;code&quot;.</li> 
+ <li>You use provisioning tool abstractions to copy every single file onto the target system.</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="27"><div>
+        <section>
+			<header>
+				<h2>Example: nginx</h2>
+			</header>    
+            <ul> 
+ <li>nginx.conf</li> 
+ <li>mime.conf</li> 
+ <li>servers.conf</li> 
+ <li>params.conf</li> 
+ <li>nginx.pp | nginx.rb | nginx.yml</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="28"><div>
+        <section>
+			<header>
+				<h2>Hiding abstractions</h2>
+			</header>    
+            <ul> 
+ <li>Well, there are much simpler ways to copy files.</li> 
+ <li>You actually hide your intent and the goal of your configuration.</li> 
+ <li><em>File</em> and <em>package</em> are not always the right abstractions.</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="29"><div>
+        <section>
+			<header>
+				<h2>Example: nginx</h2>
+			</header>    
+            <ul> 
+ <li>Upstream Server</li> 
+ <li>Virtual Host</li> 
+ <li>Static Directory</li> 
+ <li>System Wide Setting</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="30"><div>
+        <section>
+			<header>
+				<h2>Pattern: Incremental Configuration</h2>
+			</header>    
+            <ul> 
+ <li>Many packages will already be on the system in their default state.</li> 
+ <li>Instead of duplicating default state in your code, you can only define an incremental change.</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="31"><div>
+        <section>
+			<header>
+				<h2>Examples</h2>
+			</header>    
+            <ul> 
+ <li>Disallow root access on the system</li> 
+ <li>Set SELinux into permissive mode</li> 
+ <li>Set default caching timeout in Nginx</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="32"><div>
+        <section>
+			<header>
+				<h2>Tooling examples</h2>
+			</header>    
+            <ul> 
+ <li>Generic: sed, perl, regular expressions</li> 
+ <li>Puppet: file_line, augeas</li> 
+ <li>Ansible: lineinfile, replace</li> 
+ <li>Chef: ruby</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="33"><div>
+        <section>
+			<header>
+				<h2>Pattern: Configuration Composition</h2>
+			</header>    
+            <ul> 
+ <li>Compose your configuration of several template or API call blocks.</li> 
+ <li>Expose abstractions through configuration blocks.</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="34"><div>
+        <section>
+			<header>
+				<h2>Tooling examples</h2>
+			</header>    
+            <ul> 
+ <li>Puppet: concat module</li> 
+ <li>Ansible: assemble module</li> 
+ <li>Chef: partials</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="35"><div>
+        <section>
+			<header>
+				<h2>Pattern: Configuration Discovery</h2>
+			</header>    
+            <ul> 
+ <li>Part or all of system configuration is distributed through auto-discovery mechanism.</li> 
+ <li>This cleans your IaC from storing specifics. Define keys instead of values.</li> 
+ <li>Basically, &quot;convention over configuration&quot; for your cluster.</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="36"><div>
+        <section>
+			<header>
+				<h2>Tooling examples</h2>
+			</header>    
+            <ul> 
+ <li>Etcd (<a href="https://github.com/coreos/etcd">https://github.com/coreos/etcd</a>)</li> 
+ <li>Eureka (<a href="https://github.com/Netflix/eureka">https://github.com/Netflix/eureka</a>)</li> 
+ <li>ZooKeeper (<a href="https://zookeeper.apache.org/">https://zookeeper.apache.org/</a>)</li> 
+ <li>Consul (<a href="http://www.consul.io/">http://www.consul.io/</a>)</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="37"><div>
+        <section>
+			<header>
+				<h2>Pattern: Extra-Packaging Code</h2>
+			</header>    
+            <ul> 
+ <li>Package your application in the most approriate format that is ready for the most hassle-free deployment.</li> 
+ <li>Publish it to artifact repository (Maven, RubyGems, Yum, Apt...).</li> 
+ <li>Artifact repository serves as a layer of isolation between pipelines.</li> 
+ <li>Reduces amount of code needed on later stages of configuration management.</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="38"><div>
+        <section>
+			<header>
+				<h2>Application can be packaged differently</h2>
+			</header>    
+            <ol> 
+ <li>jar|gem|pyc|...</li> 
+ <li>tar.gz|tar.bz2|zip|...</li> 
+ <li>rpm|deb|msi|...</li> 
+ <li>server|container image</li> 
+</ol>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="39"><div>
+        <section>
+			<header>
+				<h2>Antipattern: Data as Code</h2>
+			</header>    
+            <ul> 
+ <li>Data has different lifecycle. It's more dynamic.</li> 
+ <li>Data changes more often than code.</li> 
+ <li>Example 1: use your provisioning tool to define organization users.</li> 
+ <li>Example 2: manifest that lists all your 500 servers.</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="40"><div>
+        <section>
+			<header>
+				<h2>Pattern: Configuration Data Source</h2>
+			</header>    
+            <ul> 
+ <li>Useful when number of managed items exceeds certain amount.</li> 
+ <li>Data file (Text, Excel, etc.)</li> 
+ <li>Database (PuppetDB etc.)</li> 
+ <li>Service API</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="41"><div>
+        <section>
+			<header>
+				<h2>Antipattern: Ignoring Styling Guidelines</h2>
+			</header>    
+            <ul> 
+ <li>Each tool/language out there has one.</li> 
+ <li>Nobody canceled clean code teachings.</li> 
+ <li>Reading, writing and eventually merging code is always easier if people follow the same formatting and styling.</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="42"><div>
+        <section>
+			<header>
+				<h2>Antipattern: Not Treating IaC as Code</h2>
+			</header>    
+            <ul> 
+ <li>Code must be in <strong>Version Control</strong>.</li> 
+ <li>Lack of experience with new tool may <strong>Code Reviews</strong>.</li> 
+ <li>Yes, there are tools for <strong>Static Code Analysis</strong> even for IaC products.</li> 
+ <li>Unit testing does not make a lot of sense for IaC, but <strong>Integration Testing</strong> does.</li> 
+ <li>Applying all the above techniques gives the best QA result for any code.</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="43"><div>
+        <section>
+			<header>
+				<h2>Antipattern: DevOoops</h2>
+			</header>    
+            <ul> 
+ <li>Since it's code, then developers can, should and will write it without involving operations.</li> 
+ <li>DevOps is a brilliant term, since it emphasises that all starts with developers.</li> 
+ <li>But one should not forget about those guys who actually keep the systems running.</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="44"><div>
+        <section>
+			<header>
+				<h2>Late alignment</h2>
+			</header>    
+            
+<figure> 
+ <img src="images/LATE_OPERATIONS_INVOLVEMENT.png" alt="la" /> 
+</figure>
+
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="45"><div>
+        <section>
+			<header>
+				<h2>Pattern: Metrics as Code</h2>
+			</header>    
+            <ul> 
+ <li>Metrics that your application provides evolve with your application.</li> 
+ <li>New components, new endpoints, new KPIs...</li> 
+ <li>Keep monitoring configuration close to the code!</li> 
+ <li>Or make it auto-discoverable and visible!</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="46"><div>
+        <section>
+			<header>
+				<h2>Configuring and collecting metrics</h2>
+			</header>    
+            <ul> 
+ <li>Monitoring software has configuration files and/or an API that can be programmed.</li> 
+ <li>There a plenty of libraries that allow making monitoring a built-in feature of your application.</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="47"><div>
+        <section>
+			<header>
+				<h2>Examples: Java</h2>
+			</header>    
+            <ul> 
+ <li>DropWizard Metrics</li> 
+ <li>Hystrix</li> 
+ <li>StageMonitor</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="48"><div>
+        <section>
+			<header>
+				<h2>Pattern: Control Panel as Code</h2>
+			</header>    
+            <ul> 
+ <li>Repeatable things live well in scripts.</li> 
+ <li>Scripts can (and will) be well executed by your CI server (or any other UI you can build around your automation).</li> 
+ <li>Effectively, that server becomes your &quot;control panel&quot;.</li> 
+ <li>Keep configuration of your &quot;control panel&quot; in version control.</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="49"><div>
+        <section>
+			<header>
+				<h2>Example: Jenkins</h2>
+			</header>    
+            <ul> 
+ <li>Jenkins API (<a href="https://jenkinsapi.readthedocs.org/en/latest/">https://jenkinsapi.readthedocs.org/en/latest/</a>)</li> 
+ <li>Job DSL (<a href="https://github.com/jenkinsci/job-dsl-plugin">https://github.com/jenkinsci/job-dsl-plugin</a>)</li> 
+ <li>Gradle plugin (<a href="https://github.com/ghale/gradle-jenkins-plugin">https://github.com/ghale/gradle-jenkins-plugin</a>)</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="50"><div>
+        <section>
+			<header>
+				<h2>Example: RunDeck</h2>
+			</header>    
+            <ul> 
+ <li>RunDeck API (<a href="http://rundeck.org/2.5.3/api/index.html">http://rundeck.org/2.5.3/api/index.html</a>)</li> 
+ <li>RunDeck Command Line (<a href="http://rundeck.org/docs/man1/index.html">http://rundeck.org/docs/man1/index.html</a>)</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="51"><div>
+        <section>
+			<header>
+				<h2>Antipattern: Private Fork of a Community Module</h2>
+			</header>    
+            <ul> 
+ <li>There is a lot of code out there.</li> 
+ <li>Private fork may work as a short-term solution.</li> 
+ <li>Do not keep your updates only to yourself. Share them back.</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="52"><div>
+        <section>
+			<header>
+				<h2>Pattern: Community Module Wrapper</h2>
+			</header>    
+            <ul> 
+ <li>It's better to create a wrapper.</li> 
+ <li>This simplifies upgrades.</li> 
+ <li>And tracebilty.</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="53"><div>
+        <section>
+			<header>
+				<h2>Antipattern: "Other Stuff"</h2>
+			</header>    
+            <ul> 
+ <li>Team members do not fully understand the logic behind code organization.</li> 
+ <li>They still are eager to contribute, but when they actually do, they break it.</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="54"><div>
+        <section>
+			<header>
+				<h2>Example: "Other Stuff"</h2>
+			</header>    
+            
+<figure> 
+ <img src="images/OTHER_STUFF_A.png" alt="other" /> 
+</figure>
+
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="55"><div>
+        <section>
+			<header>
+				<h2>Example: "Other Stuff"</h2>
+			</header>    
+            
+<figure> 
+ <img src="images/OTHER_STUFF_B.png" alt="other" /> 
+</figure>
+
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="56"><div>
+        <section>
+			<header>
+				<h2>Example: "Other Stuff"</h2>
+			</header>    
+            
+<figure> 
+ <img src="images/OTHER_STUFF_C.png" alt="other" /> 
+</figure>
+
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="57"><div>
+        <section>
+			<header>
+				<h2>Pattern: Infrastructure Query Language</h2>
+			</header>    
+            <ul> 
+ <li>Language or API that allows to query your infrastructure state (real time or last available report).</li> 
+ <li>Examples: AWS EC2 API, PuppetDB, MCollective, Salt</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="58"><div>
+        <section>
+			<header>
+				<h2>Pattern: Automation over Documentation</h2>
+			</header>    
+            <ul> 
+ <li>It's quite common that Ops team have been given or have created a bunch of documents describing procedures for system operations.</li> 
+ <li>Code can do better!</li> 
+ <li>It happens that writing those documents take as much time as writing and testing code that implement the same guide lines.</li> 
+ <li>Automating procedures can reduce the amount of documentation needed or eliminate the documentation completely.</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="59"><div>
+        <section>
+			<header>
+				<h2>Pattern: Environment Template</h2>
+			</header>    
+            <ul> 
+ <li>Define template from which you can create a fully working environment.</li> 
+ <li>It gives scaling.</li> 
+ <li>It gives isolation.</li> 
+ <li>It gives flexibilty.</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="60"><div>
+        <section>
+			<header>
+				<h2>Tooling examples</h2>
+			</header>    
+            <ul> 
+ <li>Vagrant</li> 
+ <li>AWS Cloud Formation</li> 
+ <li>Docker and Docker Compose</li> 
+ <li>Kubernetes API</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="61"><div>
+        <section>
+			<header>
+				<h2>Antipattern: Big Ball of Mud</h2>
+			</header>    
+            <ul> 
+ <li>Well, it's possible to create mess out of anything.</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="62"><div>
+        <section>
+			<header>
+				<h2>Summary of patterns I</h2>
+			</header>    
+            <ul> 
+ <li>Pattern: Reproducable Images</li> 
+ <li>Pattern: Secret Isolating</li> 
+ <li>Pattern: Ecrypted Secrets</li> 
+ <li>Pattern: Infrastructure Component DSL</li> 
+ <li>Pattern: Incremental Configuration</li> 
+ <li>Pattern: Configuration Composition</li> 
+ <li>Pattern: Configuration Discovery</li> 
+ <li>Pattern: Extra-Packaging Code</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="63"><div>
+        <section>
+			<header>
+				<h2>Summary of patterns II</h2>
+			</header>    
+            <ul> 
+ <li>Pattern: Configuration Data Source</li> 
+ <li>Pattern: Metrics as Code</li> 
+ <li>Pattern: Control Panel as Code</li> 
+ <li>Pattern: Community Module Wrapper</li> 
+ <li>Pattern: Infrastructure Query Language</li> 
+ <li>Pattern: Automation over Documentation</li> 
+ <li>Pattern: Environment Template</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="64"><div>
+        <section>
+			<header>
+				<h2>Summary of patterns III</h2>
+			</header>    
+            <ul> 
+ <li>Antipattern: Golden Image</li> 
+ <li>Antipattern: Postponing Secret Isolation</li> 
+ <li>Antipattern: &quot;Fancy-File-Copying&quot;</li> 
+ <li>Antipattern: Data as Code</li> 
+ <li>Antipattern: Ignoring Styling Guidelines</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="65"><div>
+        <section>
+			<header>
+				<h2>Summary of patterns IV</h2>
+			</header>    
+            <ul> 
+ <li>Antipattern: Not Treating IaC as Code</li> 
+ <li>Antipattern: DevOoops</li> 
+ <li>Antipattern: Private Fork of a Community Module</li> 
+ <li>Antipattern: &quot;Other Stuff&quot;</li> 
+ <li>Antipattern: Big Ball of Mud</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide shout" id="66"><div>
+        <section>
+			<header>
+				<h2>That's it!</h2>
+			</header>    
+            
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide shout" id="67"><div>
+        <section>
+			<header>
+				<h2>Danke schön!</h2>
+			</header>    
+            
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide shout" id="68"><div>
+        <section>
+			<header>
+				<h2>Thank you!</h2>
+			</header>    
+            
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide shout" id="69"><div>
+        <section>
+			<header>
+				<h2>Questions?</h2>
+			</header>    
+            
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide shout" id="70"><div>
+        <section>
+			<header>
+				<h2>Feedback is welcome!</h2>
+			</header>    
+            
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="71"><div>
+        <section>
+			<header>
+				<h2>Share your patterns:</h2>
+			</header>    
+            <ul> 
+ <li>Write a blog post!</li> 
+ <li>Share a tweet with @codingandrey or #iacpatterns.</li> 
+ <li>Or just write me to <a href="mailto:andrey@aestasit.com">andrey@aestasit.com</a>.</li> 
+</ul>
+		</section>
+	</div></div>
+    
+		
+	<!--
+		To hide progress bar from entire presentation
+		just remove “progress” element.
+		-->
+	<div class="progress"><div></div></div>
+	<script src="scripts/script.js"></script>
+	<!-- Copyright © 2010–2012 Vadim Makeev — pepelsbey.net -->
+	<!-- Photos by John Carey — fiftyfootshadows.net -->
+</body>
+</html>
