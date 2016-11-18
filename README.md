@@ -5,7 +5,7 @@ Slide deck of presentation "**Patterns for "infrastructure-as-code"**" given at 
 
 Presentation description:
 
-> One of the ways to describe software architecture is to express its configuration in executable and repeatable form - infrastructure as code. Tools that are often used for this purpose (e.g., Puppet, Ansible, Chef) are not utilized to their full potential. Provided abstractions, extension points, existing modules are ignored by turning provisioning software into a fancy file copying utility. Software configuration has a variety of patterns and abstractions to better communicate the intent of the architecture described in the form of infrastructure as code. This presentation is a attempt to classify and collect various patterns and anti-patterns experienced by the author.
+> One of the ways to describe software architecture is to express its configuration in executable and therefore repeatable form – infrastructure as code. Tools that are often used for this purpose (for example, Puppet, Ansible, Chef) are not utilized to their full potential. Provided abstractions, extension points, existing modules are ignored by turning provisioning software into just a fancy file copying utility. Software configuration has a variety of frequently appearing patterns and ready-made abstractions to better communicate the intent of the architecture described in the form of infrastructure as code. The intent of this presentation is to provide summary of such patterns.
 
 
 To see the slides just clone the repository and open `slides.html` in your browser. Or alternatively, visit one of the following links:
